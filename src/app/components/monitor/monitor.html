@@ -1,0 +1,124 @@
+<ul class="monitor">
+  <li class="title">
+    <div class="row">
+      <div class="col-md-2 type">
+        Changelist/Build
+      </div>
+      <div class="col-md-2 owner">
+        Owner
+      </div>
+      <div class="col-md-2 time">
+        Time Started
+      </div>
+      <div class="col-md-2 state">
+        State
+      </div>
+      <div class="col-md-1 metrics">
+        Metrics
+      </div>
+      <div class="col-md-1 build">
+        Build
+      </div>
+      <div class="col-md-1 ut">
+        Unit Test
+      </div>
+      <div class="col-md-1 ft">
+        Functional Test
+      </div>
+    </div>
+  </li>
+  <li ng-repeat='item in vm.resourcesList track by item.id' ng-class="{
+      fail: item.state==='fail',
+      rejected: item.state==='rejected',
+      succeed: item.state ==='succeed',
+      accepted: item.state === 'accepted'}"
+      ng-click="vm.expandItem(item.id)">
+    <div class="row">
+      <div class="col-md-2 name">
+        <img ng-src="img/{{item.type}}.{{item.state}}.png"/>
+        {{ item.name }}
+      </div>
+      <div class="col-md-2 owner">
+        {{ item.owner }}
+      </div>
+      <div class="col-md-2 time">
+        {{ item.date | date : "short"}}
+      </div>
+      <div class="col-md-2 state">
+        {{ item.state }}
+      </div>
+      <div class="col-md-1 metrics" ng-hide="item.expanded">
+        <button ng-click="vm.expandItem(item.id)"></button>
+      </div>
+      <div class="col-md-1 build" ng-hide="item.expanded">
+        <button ng-click="vm.expandItem(item.id)"></button>
+      </div>
+      <div class="col-md-1 ut" ng-hide="item.expanded">
+        <button ng-click="vm.expandItem(item.id)"></button>
+      </div>
+      <div class="col-md-1 ft" ng-hide="item.expanded">
+        <button ng-click="vm.expandItem(item.id)"></button>
+      </div>
+    </div>
+    <div ng-show="item.expanded" class="row detail">
+      <div class="col-md-2 metrics">
+        <h3>Metrics</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <i class="glyphicon glyphicon-arrow-up"></i>
+            <p>Test</p>
+          </div>
+          <div class="col-md-6">
+            <i class="glyphicon glyphicon-arrow-up"></i>
+            <p>
+              Manteinability
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <i class="glyphicon glyphicon-arrow-right"></i>
+            <p>
+
+              Security
+            </p>
+          </div>
+          <div class="col-md-6">
+              <i class="glyphicon glyphicon-arrow-right"></i>
+              <p>
+
+                Workmanship
+              </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 build">
+        <h3>Build</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <img src="img/computer.png"/>
+            Debug
+          </div>
+          <div class="col-md-6">
+            <img src="img/computer.png"/>
+            Release
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            {{ item.date | date:'hh:mm a - M/d/yy'}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2 ut">
+        <h3>Unit Test</h3>
+      </div>
+      <div class="col-md-2 ft">
+        <h3>Functional Test</h3>
+      </div>
+      <div class="col-md-4 result">
+        <h3>Result</h3>
+      </div>
+    </div>
+  </li>
+</ul>

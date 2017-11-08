@@ -1,0 +1,44 @@
+.monitor{
+  li{
+    padding: 3px;
+    margin-top: 3px;
+    cursor: pointer;
+    button{
+      height: 30px;
+      width: 50px;
+      background-color: #D8D8D8;
+      border: solid 2px #D3D4D4;
+    }
+  }
+  .succeed{
+    background-color: #F5F8F4;
+    border: solid 2px #568E31;
+    color:#568E31;
+  }
+  .accepted{
+    background-color: #F5F8F4;
+    border: solid 2px #4C85B7;
+    color: #4C85B7;
+  }
+  .fail{
+    background-color: #F5F7FB;
+    border: solid 2px #CCCDCE;
+    color: #CCCDCE;
+  }
+  .rejected{
+    background-color: #FDECEC;
+    border: solid 2px #BC0008;
+    color: #BC0008;
+  }
+  .detail{
+    &>div{
+      border: solid 2px;
+      text-align: center;
+      min-height: 180px;
+      i{
+        font-size: 40px;
+        font-weight: bold;
+      }
+    }
+  }
+}
